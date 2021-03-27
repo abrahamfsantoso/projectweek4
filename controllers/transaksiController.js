@@ -1,3 +1,4 @@
+const connection = require("../models");
 const mysql = require("../models"); // import connection
 
 const getAll = (req, res) => {
@@ -139,7 +140,7 @@ const getOne = (req, res) => {
 };
 
 const alterTransaksi= (req, res) => {
-  let sqlAlter = "ALTER TABLE transaksi DROP FOREIGN KEY transaksi_ibfk_1, DROP FOREIGN KEY transaksi_ibfk_2; ALTER TABLE transaksi ADD FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE transaksi ADD FOREIGN KEY (id_barang) REFERENCES barang(id) ON DELETE CASCADE ON UPDATE CASCADE";
+  let sqlAlter = "ALTER TABLE transaksi DROP FOREIGN KEY transaksi_ibfk_1, DROP FOREIGN KEY transaksi_ibfk_2; ALTER TABLE transaksi ADD FOREIGN KEY (id_pelanggan) REFERENCES pelanggan(id) ON DELETE CASCADE ON UPDATE CASCADE; ALTER TABLE transaksi ADD FOREIGN KEY (id_barang) REFERENCES barang(id) ON DELETE CASCADE ON UPDATE CASCADE;";
     mysql.query(sqlAlter, (err, results) => {
       if (err) {
         return res.status(500).json({

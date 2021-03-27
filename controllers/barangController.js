@@ -147,7 +147,7 @@ const deleteData = (req, res) => {
 };
 
 const alterBarang= (req, res) => {
-    let sqlAlter = "ALTER TABLE barang ADD UNIQUE (nama)";
+    let sqlAlter = "ALTER TABLE barang ADD UNIQUE (nama); ALTER TABLE barang DROP FOREIGN KEY barang_ibfk_1;ALTER TABLE barang ADD FOREIGN KEY (id_pemasok) REFERENCES pemasok(id) ON DELETE CASCADE ON UPDATE CASCADE";
       connection.query(sqlAlter, (err, results) => {
         if (err) {
           return res.status(500).json({
@@ -156,7 +156,7 @@ const alterBarang= (req, res) => {
           });
         }
         return res.status(201).json({
-          message: "Name Altered",
+          message: "Table Altered",
           data: results[0],
         });
       });
