@@ -10,6 +10,6 @@ router.post("/", barangController.create);
 router.delete("/:id", barangController.deleteData);
 router.put("/:id", barangController.update);
 router.get("/:id", barangController.getOne);
-router.patch("/:id", barangController.alterBarang);
+router.patch("/", barangController.alterBarang);
 
 module.exports = router; //to export router

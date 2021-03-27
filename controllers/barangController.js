@@ -148,7 +148,7 @@ const deleteData = (req, res) => {
 
 const alterBarang= (req, res) => {
     let sqlAlter = "ALTER TABLE barang ADD UNIQUE (nama)";
-      mysql.query(sqlAlter, (err, results) => {
+      connection.query(sqlAlter, (err, results) => {
         if (err) {
           return res.status(500).json({
             message: "Internal Server Error",
